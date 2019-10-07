@@ -22,7 +22,7 @@ export default function App() {
     <div className="container-fluid px-0">
       <div className="row">
         <div className="col-12">
-          <Navbar/>
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route component={NotFoundPage} />

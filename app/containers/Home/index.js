@@ -32,7 +32,7 @@ export function Home() {
       <div className="container">
         <div className="row">
           <div className="col-12">
-             <FormattedMessage {...messages.header} />
+            <FormattedMessage {...messages.header} />
           </div>
         </div>
       </div>
