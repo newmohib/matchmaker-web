@@ -16,9 +16,11 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Navbar from 'containers/Navbar/Loadable';
 //
 import GlobalStyle from '../../global-styles';
-
+import SideBar from 'containers/Sidebar/Loadable';
 export default function App() {
   return (
+    <div>
+      <SideBar />
     <div className="container-fluid px-0">
       <div className="row">
         <div className="col-12">
@@ -30,6 +32,7 @@ export default function App() {
           <GlobalStyle />
         </div>
       </div>
+    </div>
     </div>
   );
 }

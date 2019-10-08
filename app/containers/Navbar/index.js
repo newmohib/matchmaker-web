@@ -18,14 +18,23 @@ import makeSelectNavbar from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import { sidebarOpenToAction } from '../Sidebar/actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAlignJustify } from '@fortawesome/free-solid-svg-icons'
 
-export function Navbar() {
+export function Navbar(props) {
   useInjectReducer({ key: 'navbar', reducer });
   useInjectSaga({ key: 'navbar', saga });
 
   return (
     <div className="shadow bg-white rounded">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <button
+          className="btn btn-light btn-md"
+          onClick={() => props.sidebarOpenAction(true)}
+        >
+          <FontAwesomeIcon icon={faAlignJustify} size="lg" />
+        </button>
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item active">
             <NavLink to="/" className="nav-link">
@@ -56,6 +65,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    sidebarOpenAction: value => dispatch(sidebarOpenToAction(value)),
   };
 }
 
