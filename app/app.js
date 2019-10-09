@@ -22,6 +22,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 //
 // Import root app
 import App from 'containers/App';
+//custom css
+import './css/globalStylesheet.css';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
