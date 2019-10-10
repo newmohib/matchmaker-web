@@ -14,18 +14,18 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectLogin from './selectors';
+import makeSelectLogin,{makeSelectLoginInput} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import { LoginForm } from './loginForm';
+import { onChangeLoginInput,loginSubmit } from './actions';
 
-export function Login() {
+export function Login(props) {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
   const validateProperty = input => {
     const { name, value } = input;
-    // const obj = { [name]: value };
     let errors = null;
     if (value == '') {
       errors = 'Required';
@@ -34,24 +34,18 @@ export function Login() {
   };
 
   const handleChange = event => {
-    // console.log("namew", event.target.value, event.target.name);
     const { name, value } = event.target;
     const errors = {};
-    // const errors = { ...this.state.errors };
     const loginInputObj = { ...props.loginInput };
-    console.log('index after update', loginInputObj);
-
+   console.log("login",loginInputObj);
     const errorMessage = validateProperty(event.target);
     if (errorMessage) {
       errors[name] = 'Required';
     } else {
       delete errors[name];
     }
-
     loginInputObj[name] = value;
-
     props.onChangeLogin(loginInputObj);
-    //  this.setState({ createPassword: createPassword, errors: errors });
   };
 
   const handleSubmit = event => {
@@ -63,13 +57,7 @@ export function Login() {
       const value = entry[1];
       formObject[name] = value;
     }
-    // console.log(formObject);
-
-    const loginInputObj = { ...props.loginInput };
-
     props.loginSubmitToAction();
-
-    // console.log(loginInputObj);
   };
 
   return (
@@ -107,11 +95,14 @@ Login.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   login: makeSelectLogin(),
+  loginInput: makeSelectLoginInput(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    onChangeLogin: value => dispatch(onChangeLoginInput(value)),
+    loginSubmitToAction: () => dispatch(loginSubmit()),
   };
 }
 
