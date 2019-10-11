@@ -14,9 +14,12 @@ export const initialState = {
 /* eslint-disable default-case, no-param-reassign */
 const loginReducer = (state = initialState, action) =>
   produce(state, draft => {
+    let newInfo=action.inputObj;
+    let oldInfo=state.loginInput;
+    let all={...oldInfo, ...newInfo};
     switch (action.type) {
         case LOGIN_INPUT:
-        draft.loginInput=action.inputObj
+        draft.loginInput=all
         break;
     }
   });

@@ -36,16 +36,16 @@ export function Login(props) {
   const handleChange = event => {
     const { name, value } = event.target;
     const errors = {};
-    const loginInputObj = { ...props.loginInput };
-   console.log("login",loginInputObj);
+    //const loginInputObj = { ...props.loginInput };
     const errorMessage = validateProperty(event.target);
     if (errorMessage) {
       errors[name] = 'Required';
     } else {
       delete errors[name];
     }
-    loginInputObj[name] = value;
-    props.onChangeLogin(loginInputObj);
+
+   let loginInfo={[name]: value}
+    props.onChangeLogin(loginInfo);
   };
 
   const handleSubmit = event => {
@@ -95,7 +95,7 @@ Login.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   login: makeSelectLogin(),
-  loginInput: makeSelectLoginInput(),
+  //loginInput: makeSelectLoginInput(),
 });
 
 function mapDispatchToProps(dispatch) {

@@ -68,6 +68,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.5",
+    "@hapi/joi": "^16.1.7",
     "bootstrap": "^4.3.1",
     "chalk": "^2.4.2",
     "compression": "1.7.4",
