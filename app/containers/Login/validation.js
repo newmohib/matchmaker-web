@@ -17,11 +17,8 @@ const schema = Joi.object({
   });
 
  export const validateProperty = (input) => {
-    let {name,value}=input;
+   let {name,value}=input;
     let result= schema.validate({ [name]: value});
-    let errors = null;
-    if (result.errors) {
-      errors = "Required";
-    }
-    return errors;
+    
+    return result;
   }

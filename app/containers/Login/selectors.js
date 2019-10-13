@@ -2,7 +2,6 @@ import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
 
-
 const selectLoginDomain = state => state.login || initialState;
 
 const makeSelectLogin = () =>
@@ -18,5 +17,12 @@ const makeSelectLogin = () =>
         return substate.loginInput},
   );
 
+  const makeSelectUser = () =>
+  createSelector(
+    selectLoginDomain,
+    substate => { 
+        return substate.user},
+  );
+
 export default makeSelectLogin;
-export { selectLoginDomain ,makeSelectLoginInput };
+export { selectLoginDomain ,makeSelectLoginInput,makeSelectUser };

@@ -20,17 +20,17 @@ import Navbar from 'containers/Navbar/Loadable';
 import GlobalStyle from '../../global-styles';
 import SideBar from 'containers/Sidebar/Loadable';
 export default function App() {
-  const isAuthenticated = false;
 
   return (
     <div>
-      {isAuthenticated && <div>
+      <div>
         <SideBar />
         <div className="container-fluid px-0">
           <div className="row">
             <div className="col-12">
               <Navbar />
               <Switch>
+                <Route exact path="/login" component={Login} />
                 <Route exact path="/" component={Home} />
                 <Route component={NotFoundPage} />
               </Switch>
@@ -38,12 +38,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      </div>}
-      { !isAuthenticated && <div>
-        <Switch>
-          <Route exact path="/" component={Login} />
-        </Switch>
-      </div>}
+      </div>
     </div>
   );
 }

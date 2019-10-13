@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo ,useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -14,35 +14,42 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectLogin,{makeSelectLoginInput} from './selectors';
+import makeSelectLogin,{makeSelectUser} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import { LoginForm } from './loginForm';
 import { onChangeLoginInput,loginSubmit } from './actions';
+import { validateProperty } from './validation';
 
 export function Login(props) {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
-  const validateProperty = input => {
-    const { name, value } = input;
-    let errors = null;
-    if (value == '') {
-      errors = 'Required';
-    }
-    return errors;
-  };
+
+  useEffect(() => {
+    console.log("getUser",props.getUser);
+  }, [props.getUser]);
+
+  // const validateProperty = input => {
+  //   const { name, value } = input;
+  //   let errors = null;
+  //   if (value == '') {
+  //     errors = 'Required';
+  //   }
+  //   return errors;
+  // };
 
   const handleChange = event => {
     const { name, value } = event.target;
     const errors = {};
-    //const loginInputObj = { ...props.loginInput };
-    const errorMessage = validateProperty(event.target);
-    if (errorMessage) {
-      errors[name] = 'Required';
-    } else {
-      delete errors[name];
-    }
+    const result = validateProperty(event.target);
+    console.log("resul",result.error);
+    
+    // if (errorMessage) {
+    //   errors[name] = 'Required';
+    // } else {
+    //   delete errors[name];
+    // }
 
    let loginInfo={[name]: value}
     props.onChangeLogin(loginInfo);
@@ -95,7 +102,7 @@ Login.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   login: makeSelectLogin(),
-  //loginInput: makeSelectLoginInput(),
+  getUser: makeSelectUser(),
 });
 
 function mapDispatchToProps(dispatch) {

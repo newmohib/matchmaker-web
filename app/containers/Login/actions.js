@@ -3,7 +3,7 @@
  * Login actions
  *
  */
-import { DEFAULT_ACTION,LOGIN_INPUT,LOGIN_SUBMIT} from './constants';
+import { DEFAULT_ACTION,LOGIN_INPUT,LOGIN_SUBMIT,SET_USERS} from './constants';
 
 export function defaultAction() {
   return {
@@ -12,7 +12,6 @@ export function defaultAction() {
 }
 
 export function onChangeLoginInput(inputObj) {
-  // console.log('Login actions success',inputObj);
   return {
     type: LOGIN_INPUT,
     inputObj
@@ -22,5 +21,12 @@ export function onChangeLoginInput(inputObj) {
 export function loginSubmit() {
   return {
     type: LOGIN_SUBMIT,
+  };
+}
+
+export function setAuthUser(user) {
+  return {
+    type: SET_USERS,
+    user ,
   };
 }
