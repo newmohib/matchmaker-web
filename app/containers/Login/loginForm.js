@@ -3,7 +3,7 @@ import { Input, DateInput, Select } from 'components/Form';
 
 
 export const LoginForm = React.memo((props) => {
-    const { handleSubmit, handleChange } = props;
+    const { handleSubmit, handleChange,errors } = props;
     return (
         <div>
         <form onSubmit={handleSubmit} >
@@ -15,8 +15,8 @@ export const LoginForm = React.memo((props) => {
                         name={"username"}
                         type="text"
                         autoFocus="autoFocus"
-                    // errors={errors.password}
-                    //value={value.password}
+                     errors={errors.username}
+                    //value={value.username}
                     />
                 </div>
                 <div className="col-12 col-lg-12 col-md-12 col-sm-12 errorStyle">
@@ -26,8 +26,8 @@ export const LoginForm = React.memo((props) => {
                         name={"password"}
                         type="password"
                         autoFocus=""
-                    // errors={errors.confPassword}
-                    //value={value.confPassword}
+                        errors={errors.password}
+                    //value={value.password}
                     />
                 </div>
             </div>

@@ -26,17 +26,13 @@ export default function App() {
       <div>
         <SideBar />
         <div className="container-fluid px-0">
-          <div className="row">
-            <div className="col-12">
-              <Navbar />
-              <Switch>
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/" component={Home} />
-                <Route component={NotFoundPage} />
-              </Switch>
-              <GlobalStyle />
-            </div>
-          </div>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/home" component={Home} />
+            <Route component={NotFoundPage} />
+          </Switch>
+          <GlobalStyle />
         </div>
       </div>
     </div>

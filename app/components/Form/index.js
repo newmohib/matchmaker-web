@@ -11,10 +11,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export const Input = React.memo((props) => {
-  let { name, type, autoFocus, ...rest } = props
+  let { name, type, autoFocus,errors, ...rest } = props
   return (
     <div className="form-group">
-      {/* <label htmlFor={name}>{lable}</label> */}
       <input
         {...rest}
         // value={value}
@@ -25,6 +24,7 @@ export const Input = React.memo((props) => {
         className="form-control"
       />
       {/* {errors && <div className="alert alert-danger">{errors}</div>} */}
+      {errors && <div className="text-danger mt-1">{errors}</div>}
     </div>
   );
 })
@@ -33,7 +33,6 @@ Input.propTypes = {};
 
 
 export const DateInput = React.memo(({ onChange, dateValue, handleChangeDate, name, ...rest }) => {
-  //console.log(props);
   console.log("value", dateValue);
   return (
     <div className="form-group">

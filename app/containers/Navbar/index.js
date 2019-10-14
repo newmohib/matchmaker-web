@@ -37,16 +37,17 @@ export function Navbar(props) {
         </button>
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item active">
-            <NavLink to="/" className="nav-link">
+            <NavLink to="/home" className="nav-link">
               Home <span className="sr-only" />
             </NavLink>
           </li>
         </ul>
         <div className="form-inline my-2 my-lg-0">
-          {/* <NavLink to={`/signup`} className="btn btn-outline-success btn-sm mr-sm-2" >Signup</NavLink> */}
-          <NavLink to="/login" className="btn btn-light btn-sm mr-sm-2">
-            Login
+          
+          <NavLink to="/" className="btn btn-primary btn-sm mr-sm-2">
+            Sign in
           </NavLink>
+          
           {/* <NavLink to={`/logout`}  className="btn btn-outline-success btn-sm my-2 my-sm-0" >Logout</NavLink> */}
         </div>
       </nav>
