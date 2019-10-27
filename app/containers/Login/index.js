@@ -67,14 +67,16 @@ export function Login(props) {
   };
 
   return (
-    <div>
+    <div >
       <Helmet>
         <title>Log in</title>
         <meta name="description" content="Description of Login" />
       </Helmet>
+      <div className="row"  >
+      <div className="col-12 ">
       <div
         className="container form-wrapper"
-        style={{ height: 'calc(100vh - 65px)' }}
+        style={{ height: 'calc(100vh - 300px)' }}
       >
         <div className="row justify-content-center h-100">
           <div className="col-10 col-lg-4 col-md-8 col-sm-10 h-100 d-flex align-items-center">
@@ -94,6 +96,8 @@ export function Login(props) {
             </div>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </div>
   );

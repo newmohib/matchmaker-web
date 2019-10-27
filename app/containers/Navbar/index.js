@@ -27,6 +27,9 @@ export function Navbar(props) {
   useInjectSaga({ key: 'navbar', saga });
 
   return (
+    <div className="row p-0 navbar-margin" >
+      <div className="col-12 p-0 navbar-custom" >
+
     <div className="shadow bg-white rounded">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <button
@@ -51,6 +54,8 @@ export function Navbar(props) {
           {/* <NavLink to={`/logout`}  className="btn btn-outline-success btn-sm my-2 my-sm-0" >Logout</NavLink> */}
         </div>
       </nav>
+    </div>
+      </div>
     </div>
   );
 }

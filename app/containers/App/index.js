@@ -25,7 +25,7 @@ export default function App() {
     <div>
       <div>
         <SideBar />
-        <div className="container-fluid px-0">
+        <div className="container-fluid">
           <Navbar />
           <Switch>
             <Route exact path="/" component={Login} />
